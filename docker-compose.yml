@@ -1,0 +1,86 @@
+version: "3.1"
+
+
+networks:
+  app-tier:
+    driver: bridge
+  
+
+services:
+  
+  db:
+    image: mysql/mysql-server
+    command: --skip-host-cache
+    restart: always
+    container_name: db
+    ports:
+      - "3306:3306"
+    expose:
+      - 3306
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=nest
+    networks:
+      - app-tier
+    
+    
+
+
+  web:
+    build : ./FRONT
+    ports :
+     - 4200:4200
+    expose:
+      - 4200
+    networks:
+      - app-tier
+
+
+  api:
+    build : ./BACK
+    ports :
+     - 3000:3000
+    expose:
+      - 3000
+    depends_on:
+      - db
+    networks:
+      - app-tier
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - app-tier
+    
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    networks:
+      - app-tier
+
+  maildevt3:
+        container_name: maildevt3
+        image: djfarrelly/maildev
+        ports:
+            - 8003:80
+  
+  quarkus:
+    build: 
+      context: ./Quarkus
+      dockerfile : src/main/docker/Dockerfile.native
+    ports :
+     - 8081:8081
+    expose:
+      - 8081
+    networks:
+      - app-tier
+    depends_on:
+      - rabbitmq
