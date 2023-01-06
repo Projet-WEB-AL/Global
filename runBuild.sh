@@ -1,3 +1,4 @@
+git submodule update --remote
 cd ./Quarkus
 sudo ./mvnw package -Pnative -Dquarkus.native.container-build=true
 cd ../
