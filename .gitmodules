@@ -1,3 +1,6 @@
 [submodule "FRONT"]
 	path = FRONT
 	url = https://github.com/Projet-WEB-AL/FRONT
+[submodule "BACK"]
+	path = BACK
+	url = https://github.com/Projet-WEB-AL/BACK
