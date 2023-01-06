@@ -4,3 +4,6 @@
 [submodule "BACK"]
 	path = BACK
 	url = https://github.com/Projet-WEB-AL/BACK
+[submodule "Quarkus"]
+	path = Quarkus
+	url = https://github.com/Projet-WEB-AL/Quarkus
