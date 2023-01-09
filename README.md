@@ -10,6 +10,8 @@ git clone --recurse-submodules https://github.com/Projet-WEB-AL/Global.git
 then run :
 ```bash
 sh runBuild.sh
+
+If a problem occurs when cloning git repositories you can manually clone the repositories in the global repository.
 ```
 after that the following ports will be used by the following applications :
 |   Name   | Ports localhost             |
@@ -24,3 +26,4 @@ after that the following ports will be used by the following applications :
 
 
 
+Please use chrome to use the website (firefox and safari not supported)
