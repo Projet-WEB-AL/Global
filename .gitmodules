@@ -1,9 +1,12 @@
 [submodule "FRONT"]
 	path = FRONT
 	url = https://github.com/Projet-WEB-AL/FRONT
+    branch = stable
 [submodule "BACK"]
 	path = BACK
 	url = https://github.com/Projet-WEB-AL/BACK
+    branch = stable
 [submodule "Quarkus"]
 	path = Quarkus
 	url = https://github.com/Projet-WEB-AL/Quarkus
+    branch = stable
