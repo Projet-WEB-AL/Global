@@ -9,7 +9,7 @@ git clone --recurse-submodules https://github.com/Projet-WEB-AL/Global.git
 ```
 then run :
 ```bash
-sh runBuild.sh
+sh runDev.sh
 ```
 If a problem occurs when cloning git repositories you can manually clone the repositories in the global repository.
 
