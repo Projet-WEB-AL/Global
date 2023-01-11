@@ -17,7 +17,9 @@ services:
       - ./my-db:/var/lib/mysql
     
   web:
-    build : ./FRONT
+    build :
+      context: ./FRONT
+      dockerfile: Prod_dockerfile
   
 
   api:
@@ -62,3 +64,36 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./certs:/etc/nginx/certs
+  
+  prometheus:
+    image: prom/prometheus
+    depends_on:
+      - api
+      - quarkus
+      - rabbitmq
+    volumes:
+      - prometheus-data:/prometheus
+      - ./Monitoring/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3001:3001
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - grafana-config:/etc/grafana
+      - ./Monitoring/grafana/grafanaDashboard.yaml:/etc/grafana/dashboards/grafanaDashboard.yaml
+      - ./Monitoring/grafana/grafanaDatasource.yaml:/etc/grafana/provisioning/datasources/grafanaDatasource.yaml
+
+volumes:
+  grafana-data: 
+  grafana-config: 
+  grafana-dashboards: 
+  prometheus-data:
