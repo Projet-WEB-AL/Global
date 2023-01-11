@@ -77,8 +77,6 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
-    profiles:
-      - m
       
   grafana:
     image: grafana/grafana
@@ -93,8 +91,7 @@ services:
       - grafana-config:/etc/grafana
       - ./Monitoring/grafana/grafanaDashboard.yaml:/etc/grafana/dashboards/grafanaDashboard.yaml
       - ./Monitoring/grafana/grafanaDatasource.yaml:/etc/grafana/provisioning/datasources/grafanaDatasource.yaml
-    profiles:
-      - m
+
 
 volumes:
   grafana-data: 
