@@ -11,10 +11,10 @@ export const options = {
 
 
 export default function (data) {
-    const baseUrl = "http://localhost";
+    const baseUrl = "http://172.17.0.1";
     group("home", function () {
         let res;
-        res = http.get(baseUrl + "/");
+        res = http.get(baseUrl + "/login/");
         check(res, {
             "status is 200": (r) => r.status === 200,
         });
@@ -24,7 +24,7 @@ export default function (data) {
     group("api home", function () {
         let res;
 
-        res = http.get(baseUrl + "/api");
+        res = http.get(baseUrl + "/api/");
         check(res, {
             "status is 200": (r) => r.status === 200,
         });
