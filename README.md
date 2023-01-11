@@ -34,13 +34,13 @@ sh runDev.sh
 after that the following ports will be used by the following applications :
 |   Name   | Ports localhost             |
 |----------|-----------------------------|
-| mysql    | 3306                        |
-| FRONT    | 4200                        |
-|BACK      | 3000                        |
-|adminer   | 8080                        |
-|rabbitmq  | 5672 and 15672 (web client) |
-|maildevt3 | 80                          |
-|quarkus   | 8081                        |
+| mysql    | [3306](http://locahost:3306)                        |
+| FRONT    | [4200](http://locahost:4200)                         |
+|BACK      | [3000](http://locahost:3000)                         |
+|adminer   | [8080](http://locahost:8080)                         |
+|rabbitmq  | [5672](http://locahost:5672) and [15672](http://locahost:15672) (web client) |
+|maildevt3 | [80](http://locahost:80)                          |
+|quarkus   | [8081](http://locahost:8081)                         |
 
 Please use chrome to use the website (firefox and safari not supported)
 
